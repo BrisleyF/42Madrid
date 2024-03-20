@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: brfajard <brfajard@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: brfajard <marvin@42.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/17 12:25:39 by brfajard          #+#    #+#              #
 #    Updated: 2024/03/17 16:36:20 by brfajard         ###   ########.fr        #
@@ -18,7 +18,7 @@ AR =	ar rcs	# 'ar' es una utilidad de Unix para manipular archivos de biblioteca
 RM =	rm -f	# variable que asigna el comando que se utilizará para eliminar archivos.
 
 # Files
-SRC =	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c	# Variable que contiene una lista de archivos o funciones.  
+SRC =	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c	# Variable que contiene una lista de archivos o funciones.  
 
 OBJS =	$(SRC:.c=.o)	# Variable  que utiliza una regla de sustitución de patrones para reemplazar la extensión ".c" por ".o" en cada uno de los nombres de archivo en la variable SRCS. 
 

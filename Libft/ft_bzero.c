@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brfajard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 14:20:53 by brfajard          #+#    #+#             */
-/*   Updated: 2024/03/18 14:21:03 by brfajard         ###   ########.fr       */
+/*   Created: 2024/03/20 16:07:27 by brfajard          #+#    #+#             */
+/*   Updated: 2024/03/20 16:07:40 by brfajard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// La función ft_strlen calcula la longitud de una cadena 
-// de caracteres pasada como argumento 
-// y devuelve el número de caracteres en esa cadena, 
-// excluyendo el carácter nulo al final.
+// La función bzero en C se utiliza para establecer los primeros n
+// bytes de un bloque de memoria a cero. Es similar a memset, 
+// pero específicamente para establecer bytes en cero. 
+// La función bzero es útil cuando necesitas limpiar un bloque 
+// de memoria, como inicializar una estructura 
+// o un búfer de datos, antes de usarlo.
 
 #include "libft.h"
 
-size_t	ft_strlen(char *str)
+void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+	ft_memset(s, 0, n);
 }
