@@ -69,20 +69,20 @@ int	main(void)
 
     ft_memcpy(dest, src, sizeof(src));
     printf("Contenido de dst después de la copia: %s\n", dest);
-
+*/
     // ft_memmove:
     char buffer[20] = "Hola, mundo!"; // Área de memoria de destino
-    char *src = buffer; // Área de memoria de origen superpuesta (comienza después del espacio ' ')
+    char *src = buffer + 5; // Copia desde la posicion de memoria 5 en la cadena de origen y guardalos en la direccion de memoria apuntada por dest.
 
     printf("Antes de copiar:\n");
     printf("buffer (destino): %s\n", buffer);
     printf("src (origen): %s\n", src);
 
-    ft_memmove(buffer, src, strlen(src) + 1); // Copiar desde src a buffer (incluyendo el carácter nulo)
+    ft_memmove(buffer, src, strlen(src) + 1); // Copiar desde src a buffer,  strlen(src): contar los caracteres de src (incluyendo el carácter nulo)
 
     printf("\nDespués de copiar:\n");
     printf("buffer (destino): %s\n", buffer);
     printf("src (origen): %s\n", src);
-*/
+
 	return (0);
 }
