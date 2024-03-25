@@ -41,20 +41,17 @@
 char	*ft_strchr(const char *s, int c)
 {
 	int	i;
-	char	*ret;
-	
+
+	if (s == NULL)
+		return (NULL);
 	i = 0;
-	ret = NULL;
-	while (s[i] != '\0')
+	while (s[i])
 	{
 		if (s[i] == (char)c)
-		{
-			ret = (char *)(s + i);
-            break;
-		}
+			return ((char*)(s + i));
 		i++;
 	}
 	if (c == '\0')
-		ret = (char *)(s + i);
-	return (ret);
+		return ((char*)(s + i));
+	return (NULL);
 }

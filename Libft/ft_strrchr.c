@@ -24,24 +24,16 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
-	char	*ret;
+	int	i;
 
-	i = ft_strlen(s);
-	if (c == '\0')
-		ret = (char *)(s + i);
-	else
+	i = 0;
+	while (s[i])
+		i++;
+	while (i >= 0)
 	{
-		ret = NULL;
-		while (i > 0)
-		{
-			i--;
-			if (s[i] == (char)c)
-			{
-				ret = (char *)(s + i);
-				break ;
-			}
-		}
+		if (s[i] == (char)c)
+			return ((char*)(s + i));
+		i--;
 	}
-	return (ret);
+	return (NULL);
 }

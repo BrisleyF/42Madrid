@@ -130,9 +130,8 @@ int	main(void)
     } else {
         printf("El carácter '%c' no se encuentra en la cadena.\n", c);
     }
-*/
 
-    // 17) ft_strncmp:
+    17) ft_strncmp:
      const char *str1 = "corazonnnn";
     const char *str2 = "corazon";
     int result;
@@ -148,6 +147,19 @@ int	main(void)
         printf("'%s' es mayor que '%s'\n", str1, str2);
         printf("El resultado: '%d'\n", result);
     }
+
+    // 18) ft_memchr:
+    const char *str = "Mi mamá me mima";
+    char *found = ft_memchr(str, 'x', strlen(str));
+    
+    if (found != NULL) {
+        printf("El caracter 'x' se encontró en la posición %ld.\n", found - str);
+        printf("Resultado: %s\n", found);
+        printf("Resultado: %s\n", str);
+    } else {
+        printf("El caracter 'x' no se encontró.\n");
+    }
+*/
     
 	return (0);
 }
