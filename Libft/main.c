@@ -148,7 +148,7 @@ int	main(void)
         printf("El resultado: '%d'\n", result);
     }
 
-    // 18) ft_memchr:
+    18) ft_memchr:
     const char *str = "Mi mamá me mima";
     char *found = ft_memchr(str, 'x', strlen(str));
     
@@ -159,7 +159,86 @@ int	main(void)
     } else {
         printf("El caracter 'x' no se encontró.\n");
     }
-*/
-    
+
+    19) ft_memcmp:
+    // Definimos dos bloques de memoria para comparar
+    char block1[] = "Applyab";
+    char block2[] = "Applehx";
+
+    // Definimos el número de bytes a comparar
+    size_t n = 7; // Se compararán los primeros 5 bytes
+
+    // Realizamos la comparación utilizando memcmp()
+    int result = ft_memcmp(block1, block2, n);
+
+    // Mostramos el resultado de la comparación
+    if (result < 0) {
+        printf("block1 es menor que block2\n");
+    } else if (result == 0) {
+        printf("block1 es igual a block2\n");
+    } else {
+        printf("block1 es mayor que block2\n");
+    }
+
+    20) ft_strnstr:
+    const char *haystack = "Hello, world! This is a test string.";
+    const char *needle = "world";
+    size_t len = 15; // Buscar solo en los primeros 15 caracteres de haystack
+
+    char *result = ft_strnstr(haystack, needle, len);
+
+    if (result != NULL) {
+        printf("Subcadena encontrada en la posición %ld: %s\n", result - haystack, result);
+    } else {
+        printf("Subcadena no encontrada.\n");
+    }
+
+    21) ft_atoi: 
+    // Ejemplos de cadenas de caracteres que representan números
+    const char *str1 = "123";
+    const char *str2 = "-456";
+    const char *str3 = "   789";
+    const char *str4 = "+321";
+    const char *str5 = "   -123abc";
+
+    // Llamadas a la función ft_atoi y muestra de los resultados
+    printf("Número convertido de \"%s\": %d\n", str1, ft_atoi(str1));
+    printf("Número convertido de \"%s\": %d\n", str2, ft_atoi(str2));
+    printf("Número convertido de \"%s\": %d\n", str3, ft_atoi(str3));
+    printf("Número convertido de \"%s\": %d\n", str4, ft_atoi(str4));
+    printf("Número convertido de \"%s\": %d\n", str5, ft_atoi(str5));
+
+    // 22) ft_calloc:
+    size_t num_elements = 5; // Número de elementos en el arreglo
+    size_t size_of_elements = sizeof(int); // Tamaño de cada elemento (en bytes)
+
+    // Llamada a ft_calloc para asignar memoria para un arreglo de 5 enteros
+    int *array = (int *)ft_calloc(num_elements, size_of_elements);
+
+    // Verificación si la asignación de memoria fue exitosa
+    if (array == NULL) {
+        printf("Error: No se pudo asignar memoria.\n");
+        return 1; // Salir del programa con un código de error
+    }
+
+    // Inicializar el índice y llenar el arreglo con valores
+    size_t i = 0;
+    while (i < num_elements) {
+        array[i] = i * 10; // Llenar el arreglo con valores (0, 10, 20, 30, 40)
+        i++;
+    }
+
+    // Imprimir el contenido del arreglo
+    printf("Contenido del arreglo:\n");
+    i = 0;
+    while (i < num_elements) {
+        printf("%d ", array[i]);
+        i++;
+    }
+    printf("\n");
+
+    // Liberar la memoria asignada
+    free(array);
+*/   
 	return (0);
 }

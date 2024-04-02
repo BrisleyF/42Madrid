@@ -12,46 +12,34 @@
 
 // Se utiliza para buscar la primera aparición de un carácter específico en
 // una cadena de caracteres (string).
-// Utiliza un bucle while para iterar sobre los caracteres de la cadena s
-// hasta que encuentre el carácter nulo '\0'.
-// Dentro del bucle, verifica si el carácter en la posición actual (s[i])
-// coincide con el carácter buscado (c). Si coincide, asigna un puntero a esa
-// posición de memoria en la cadena a la variable ret
-// Después del bucle, si el carácter buscado c es el carácter nulo '\0',
-// actualiza ret para que apunte al final de la cadena s.
-// Finalmente, devuelve el valor de ret, que será un puntero al carácter
-// encontrado en la cadena, o NULL si el carácter no se encuentra.
-// Aquí, (char)c convierte explícitamente el entero c al tipo de datos
-// char. Esto es necesario para asegurar que se realice una comparación
-// válida entre el carácter en la posición actual de la cadena s y el
-// carácter buscado c.
-// En resumen, se cambia el tipo de variable a char en ciertas partes
-// del código para asegurar que las comparaciones y asignaciones se
-// realicen correctamente con respecto a los caracteres en la cadena.
-// Cuando se encuentran varias letras iguales en una cadena y se utiliza
-// la función ft_strchr para buscar un carácter específico, la función
-// devolverá la posición de la primera ocurrencia de ese carácter en la
+// La función devuelve un puntero a un carácter (char *).
+// while (*s != (char) c): Este es un bucle while que se ejecuta mientras el
+// carácter apuntado por s no sea igual al carácter c que estamos buscando.
+// La expresión (char) c se usa para convertir el valor c a un carácter,
+// ya que c se pasa como un entero. Esto asegura que se comparen tipos de
+// datos compatibles.
+// if (*s == '\0') return (0);: Dentro del bucle while, si llegamos al final
+// de la cadena ('\0'), significa que el carácter c no está presente en la
+// cadena s, por lo que devolvemos un puntero nulo (0).
+// s++;: Si el carácter actual no es igual a c, avanzamos al siguiente carácter
+// en la cadena s. Esto nos permite continuar buscando el carácter c en la
 // cadena.
-// Al añadir break dentro del condicional que encuentra la primera
-// ocurrencia del carácter c, el bucle se detendrá y ret se asignará a
-// la posición de la primera ocurrencia encontrada.
+// return ((char *) s);: Una vez que encontramos el carácter c en la cadena s,
+// devolvemos un puntero a la posición de ese carácter en la cadena. Se realiza
+// un casting de const char * a char * para permitir que la función devuelva
+// un puntero no constante.
 
 #include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
-
-	if (s == NULL)
-		return (NULL);
-	i = 0;
-	while (s[i])
+	while (*s != (char) c)
 	{
-		if (s[i] == (char)c)
-			return ((char*)(s + i));
-		i++;
+		if (*s == '\0')
+		{
+			return (NULL);
+		}
+		s++;
 	}
-	if (c == '\0')
-		return ((char*)(s + i));
-	return (NULL);
+	return ((char *) s);
 }
