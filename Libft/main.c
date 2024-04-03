@@ -239,6 +239,19 @@ int	main(void)
 
     // Liberar la memoria asignada
     free(array);
-*/   
+ 
+    // 23) ft_strdup:
+    const char* original;
+    char* duplicado = strdup(original);
+    
+    if (duplicado != NULL) {
+        printf("Cadena original: %s\n", original);
+        printf("Cadena duplicada: %s\n", duplicado);
+        free(duplicado); // Liberamos la memoria asignada dinámicamente
+    } else {
+        printf("Error: No se pudo duplicar la cadena\n");
+    }
+*/
+    
 	return (0);
 }

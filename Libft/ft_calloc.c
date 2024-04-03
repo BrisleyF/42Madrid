@@ -38,7 +38,7 @@
 // asignación de memoria falló, este puntero será NULL.
 
 #include "libft.h"
-#include <errno.h>
+#include <stdlib.h>
 
 void	*ft_calloc(size_t count, size_t size)
 {
@@ -50,9 +50,7 @@ void	*ft_calloc(size_t count, size_t size)
 		return (NULL);
 	ptr = malloc(total_size);
 	if (ptr != NULL)
-		ft_bzero(ptr, count);
-	else
-		errno = ENOMEM;
+		ft_bzero(ptr, total_size);
 	return (ptr);
 	free(ptr);
 }
