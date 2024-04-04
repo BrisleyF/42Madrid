@@ -25,7 +25,7 @@
 // original. En este caso, la longitud de "Hola" es 4 caracteres.
 // (ft_strlen(s1) + 1): Luego, sumamos 1 a la longitud para incluir el carácter
 // nulo terminador '\0'. En este caso, sería 5.
-// sizeof(*s1): Esto devuelve el tamaño de un solo carácter de la cadena
+// sizeof(char): Esto devuelve el tamaño de un solo carácter de la cadena
 // original. En C, el tamaño de un char suele ser de 1 byte.
 // sizeof(*s1) * (ft_strlen(s1) + 1): Multiplicamos el tamaño de un carácter por
 // la longitud de la cadena más 1 para obtener el tamaño total necesario para la
@@ -51,9 +51,7 @@ char	*ft_strdup(const char *s1)
 	char	*str;
 	size_t	i;
 
-	if (s1 == NULL)
-		return (NULL);
-	str = (char *)malloc(sizeof(*s1) * (ft_strlen(s1) + 1));
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (str == NULL)
 		return (NULL);
 	i = 0;
