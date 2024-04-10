@@ -47,6 +47,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 
 	londst = ft_strlen(dst);
 	lonsrc = ft_strlen(src);
+	if ((src == NULL || dst == NULL) && dstsize < 1)
+		return (0);
 	if (dstsize <= londst)
 		return (lonsrc + dstsize);
 	cont = londst;
