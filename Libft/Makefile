@@ -26,6 +26,10 @@ SRC =	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c\
 
 OBJS =	$(SRC:.c=.o)
 
+BONUS =	ft_lstnew_bonus.c 
+
+BONUS_OBJS = $(BONUS:.c=.o)
+
 all: $(NAME)
 
 $(NAME): $(OBJS) libft.h
@@ -36,7 +40,7 @@ $(NAME): $(OBJS) libft.h
 
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(BONUS_OBJS)
 
 
 fclean: clean
@@ -46,7 +50,10 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+bonus: $(OBJS) $(BONUS_OBJS)
+	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+
+.PHONY: all clean fclean re bonus
 
 # Instructions:
 
