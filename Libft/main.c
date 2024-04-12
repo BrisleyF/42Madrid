@@ -263,7 +263,7 @@ int	main(void)
         printf("Error: No se pudo duplicar la cadena\n");
     }
 
-    // 24) ft_strncpy:
+    // 24) ft_substr:
     char *origen = "Dime lindura";
     unsigned int start = 0;
     size_t len = 5;
@@ -365,5 +365,23 @@ int	main(void)
     ft_putnbr_fd(number, 1);
     printf("\n");
 */
+    // 35) ft_lstnew:
+    // Crear una cadena muy larga
+    char *cadena_larga = "Esta es una cadena muy larga que tiene muchos caracteres";
+    // Crear un nuevo nodo y almacenar la cadena larga como contenido
+    t_list *nuevo_nodo = ft_lstnew(cadena_larga);
+    // Verificar si la creación del nodo fue exitosa
+    if (nuevo_nodo == NULL) {
+        printf("Error: No se pudo crear el nuevo nodo.\n");
+        return 1;
+    }
+    // Imprimir el contenido del nodo
+    // En el caso de una cadena de caracteres (char *), necesitas castear el puntero void *
+    // al tipo de dato correcto antes de imprimirlo con printf. Es por eso que necesitas
+    // usar (char *) antes de nuevo_nodo->content, para indicarle a printf que interprete
+    // el contenido del nodo como una cadena de caracteres cuando lo imprima.
+    printf("Contenido del nuevo nodo: %s\n", (char *)nuevo_nodo->content);
+    // Liberar la memoria asignada al nodo
+    free(nuevo_nodo);
 	return (0);
 }
