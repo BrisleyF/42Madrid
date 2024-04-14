@@ -364,7 +364,7 @@ int	main(void)
     // Escribe el número 12345 en la salida estándar (stdout)
     ft_putnbr_fd(number, 1);
     printf("\n");
-*/
+
     // 35) ft_lstnew:
     // Crear una cadena muy larga
     char *cadena_larga = "Esta es una cadena muy larga que tiene muchos caracteres";
@@ -383,5 +383,138 @@ int	main(void)
     printf("Contenido del nuevo nodo: %s\n", (char *)nuevo_nodo->content);
     // Liberar la memoria asignada al nodo
     free(nuevo_nodo);
+
+    // 36) ft_lstadd_front:
+    // Creamos la lista original
+    t_list *head = NULL;
+    t_list *node1 = malloc(sizeof(t_list));
+    t_list *node2 = malloc(sizeof(t_list));
+    t_list *node3 = malloc(sizeof(t_list));
+    node1->content = "a";
+    node1->next = node2;
+    node2->content = "b";
+    node2->next = node3;
+    node3->content = "c";
+    node3->next = NULL;
+    head = node1;
+    // Imprimimos la lista original
+    printf("Lista original: ");
+    t_list *current = head;
+    while (current != NULL) {
+        printf("%s -> ", (char *)current->content);
+        current = current->next;
+    }
+    printf("NULL\n");
+    // Agregamos el número 0 al principio de la lista
+    t_list *new_node = malloc(sizeof(t_list));
+    new_node->content = "A";
+    new_node->next = NULL;
+    ft_lstadd_front(&head, new_node);
+    // Imprimimos la lista después de agregar el número 0 al principio
+    printf("Lista después de agregar %s al principio: ", (char *)new_node->content);
+    current = head;
+    while (current != NULL) {
+        printf("%s -> ", (char *)current->content);
+        current = current->next;
+    }
+    printf("NULL\n");
+    free(new_node);
+
+    // 37) ft_lstsize:
+     // Creación de una lista vacía
+    t_list *head = NULL;
+    // Agregamos algunos elementos a la lista
+    t_list *node1 = malloc(sizeof(t_list));
+    t_list *node2 = malloc(sizeof(t_list));
+    t_list *node3 = malloc(sizeof(t_list));
+    head = node1;
+    node1->next = node2;
+    node2->next = node3;
+    node3->next = NULL;
+    // Ejemplo 1: Contar elementos en una lista vacía
+    int size1 = ft_lstsize(NULL);
+    printf("Tamaño de la lista vacía: %d\n", size1); // Salida esperada: 0
+    // Ejemplo 2: Contar elementos en una lista no vacía
+    int size2 = ft_lstsize(head);
+    printf("Tamaño de la lista: %d\n", size2); // Salida esperada: 3
+    free(node1);
+    free(node2);
+    free(node3);
+
+    // 38) ft_lstlast:
+    // Creamos una lista vacía
+    t_list *head = NULL;
+    // Ejemplo 1: lista vacía
+    t_list *last1 = ft_lstlast(head);
+    if (last1 == NULL)
+        printf("La lista está vacía.\n");
+    else
+        printf("El último elemento de la lista es: %p\n", last1); // Esperado: NULL
+    // Creamos una lista con algunos nodos
+    t_list *node1 = ft_lstnew("Hola");
+    t_list *node2 = ft_lstnew("Mundo");
+    t_list *node3 = ft_lstnew("!");
+    // Unimos los nodos para formar una lista
+    node1->next = node2;
+    node2->next = node3;
+    head = node1;
+    // Ejemplo 2: lista con elementos
+    t_list *last2 = ft_lstlast(head);
+    if (last2 != NULL)
+        printf("El último elemento de la lista es: %s\n", (char *)last2->content); // Esperado: "!"
+    free(node1);
+    free(node2);
+    free(node3);
+
+    // 39) ft_lstadd_back:
+    // Creamos algunos nodos para nuestra lista
+    t_list *node1 = (t_list *)malloc(sizeof(t_list));
+    node1->content = "Hello";
+    node1->next = NULL;
+    t_list *node2 = (t_list *)malloc(sizeof(t_list));
+    node2->content = "world";
+    node2->next = NULL;
+    t_list *node3 = (t_list *)malloc(sizeof(t_list));
+    node3->content = "from";
+    node3->next = NULL;
+    t_list *node4 = (t_list *)malloc(sizeof(t_list));
+    node4->content = "OpenAI";
+    node4->next = NULL;
+    // Creamos una lista vacía
+    t_list *list = NULL;
+    // Agregamos los nodos a la lista
+    ft_lstadd_back(&list, node1);
+    ft_lstadd_back(&list, node2);
+    ft_lstadd_back(&list, node3);
+    ft_lstadd_back(&list, node4);
+    // Imprimimos los contenidos de la lista
+    printf("Contenidos de la lista:\n");
+    t_list *current = list;
+    while (current != NULL)
+    {
+        printf("%s\n", (char *)current->content);
+        current = current->next;
+    }
+    // Liberamos la memoria asignada a los nodos de la lista
+    current = list;
+    while (current != NULL)
+    {
+        t_list *temp = current;
+        current = current->next;
+        free(temp);
+    }
+*/
+    // 40) ft_lstdelone:
+    // Creamos un nodo para nuestra lista
+    t_list *node = (t_list *)malloc(sizeof(t_list));
+    if (node == NULL) {
+        // Manejar el error de asignación de memoria
+        return 1;
+    }
+    node->content = "Hello";
+    node->next = NULL;
+    // Llamamos a la función ft_lstdelone para eliminar el nodo
+    ft_lstdelone(node, &free);
+
 	return (0);
 }

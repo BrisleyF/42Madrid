@@ -91,6 +91,16 @@ void	ft_putnbr_fd(int n, int fd);
 
 t_list	*ft_lstnew(void *content);
 
+void	ft_lstadd_front(t_list **lst, t_list *new);
+
+int		ft_lstsize(t_list *lst);
+
+t_list	*ft_lstlast(t_list *lst);
+
+void	ft_lstadd_back(t_list **lst, t_list *new);
+
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+
 #endif
 
 // La palabra clave struct en C se utiliza para definir una estructura de
@@ -115,7 +125,7 @@ t_list	*ft_lstnew(void *content);
 // lista enlazada. Es de tipo struct s_list *, lo que significa que apunta a
 // otra estructura del mismo tipo (es decir, a otro nodo en la lista). Si next
 // es NULL, significa que este nodo es el último de la lista.
-//   Este tipo de estructura de datos es útil cuando necesitas almacenar una
+// Este tipo de estructura de datos es útil cuando necesitas almacenar una
 // secuencia de elementos y quieres poder agregar o eliminar elementos de manera
 // eficiente. La flexibilidad de la lista enlazada permite inserciones y
 // eliminaciones eficientes en cualquier punto de la lista.

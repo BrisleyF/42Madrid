@@ -38,7 +38,7 @@
 // caracteres en sí mismos.
 // Por lo tanto, el tamaño del nodo (sizeof(t_list)) sigue siendo constante e
 // independiente del tamaño del contenido que se almacena en él. El contenido 
-//real se almacena en la memoria por separado, y el campo content del nodo
+// real se almacena en la memoria por separado, y el campo content del nodo
 // simplemente apunta a esa ubicación de memoria.
 // `node -> content = content`:
 // node: es un puntero que apunta al nodo que estamos creando o modificando en
