@@ -511,10 +511,15 @@ int	main(void)
         // Manejar el error de asignación de memoria
         return 1;
     }
-    node->content = "Hello";
+    node->content = ft_strdup("Hello");
+    // Se utiliza strdup para asignar memoria y copiar la cadena "Hello" 
+    // al campo content del nodo. 
     node->next = NULL;
     // Llamamos a la función ft_lstdelone para eliminar el nodo
     ft_lstdelone(node, &free);
+
+
+
 
 	return (0);
 }
