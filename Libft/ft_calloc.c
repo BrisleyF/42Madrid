@@ -51,5 +51,4 @@ void	*ft_calloc(size_t count, size_t size)
 	if (ptr != NULL)
 		ft_bzero(ptr, total_size);
 	return (ptr);
-	free(ptr);
 }

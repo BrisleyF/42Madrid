@@ -18,6 +18,10 @@
 // del: un puntero a una función que se utilizará para liberar la memoria
 // asignada al contenido del nodo. Si del es NULL, la función no realizará
 // ninguna operación en el contenido del nodo.
+// void (*del)(void*) declara un puntero a una función que no devuelve ningún
+// valor y acepta un parámetro de tipo puntero void*. Este tipo de sintaxis
+// es comúnmente utilizada en C para pasar funciones como argumentos a otras
+// funciones.
 // Dentro de la función ft_lstdelone, se realiza lo siguiente:
 // Se comprueba si el nodo no es NULL. Si lst es NULL, significa que no hay
 // ningún nodo que eliminar, por lo que la función sale sin hacer nada.

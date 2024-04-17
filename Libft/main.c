@@ -38,6 +38,12 @@ void print_index_char(unsigned int index, char *c)
     printf("Carácter en la posición %u: %c\n", index, *c);
 }
 
+// Función de ejemplo que imprime el contenido de un nodo
+void print_content(void *content)
+{
+    printf("%s\n", (char *)content);
+}
+
 int	main(void)
 {
 /*
@@ -356,8 +362,9 @@ int	main(void)
 
     // 33) ft_putendl_fd: 
     char *s = "Hello, world!";
+    int num = 1;
     // Escribe la cadena "Hello, world!" seguida de un salto de línea en la salida estándar (stdout)
-    ft_putendl_fd(s, 1);
+    ft_putendl_fd(s, num);
 
     // 34) ft_putnbr_fd;
     int number = -12345;
@@ -503,7 +510,7 @@ int	main(void)
         current = current->next;
         free(temp);
     }
-*/
+
     // 40) ft_lstdelone:
     // Creamos un nodo para nuestra lista
     t_list *node = (t_list *)malloc(sizeof(t_list));
@@ -518,8 +525,57 @@ int	main(void)
     // Llamamos a la función ft_lstdelone para eliminar el nodo
     ft_lstdelone(node, &free);
 
+    // 41) ft_lstclear:
+    // Creación de algunos nodos de lista
+    t_list *node1 = malloc(sizeof(t_list));
+    node1->content = ft_strdup("Node 1");
+    t_list *node2 = malloc(sizeof(t_list));
+    node2->content = ft_strdup("Node 2");
+    t_list *node3 = malloc(sizeof(t_list));
+    node3->content = ft_strdup("Node 3");
 
+    // Establecimiento de enlaces entre los nodos
+    node1->next = node2;
+    node2->next = node3;
+    node3->next = NULL; // El último nodo apunta a NULL
 
+    // Puntero al primer nodo de la lista
+    t_list *list = node1;
+
+    // Llamada a ft_lstclear para limpiar la lista
+    ft_lstclear(&list, &free);
+
+    // Verificar que la lista se ha limpiado correctamente (debe ser NULL)
+    if (list == NULL) {
+        printf("La lista se ha limpiado correctamente.\n");
+    } else {
+        printf("Error: La lista no se ha limpiado correctamente.\n");
+    }
+
+    // 42) ft_lstiter: 
+    // Creamos algunos nodos de una lista enlazada
+    t_list *node1 = malloc(sizeof(t_list));
+    node1->content = ft_strdup("Bonnyberto");
+    t_list *node2 = malloc(sizeof(t_list));
+    node2->content = ft_strdup("Sara");
+    t_list *node3 = malloc(sizeof(t_list));
+    node3->content = ft_strdup("Gato");
+
+    // Establecemos los enlaces entre los nodos
+    node1->next = node2;
+    node2->next = node3;
+    node3->next = NULL;
+
+    // Puntero al primer nodo de la lista
+    t_list *list = node1;
+
+    // Llamamos a ft_lstiter para aplicar la función print_content a cada nodo de la lista
+    ft_lstiter(list, &print_content);
+
+    // Liberamos la memoria de la lista (opcional, dependiendo de tu implementación)
+    ft_lstclear(&list, &free);
+*/
+    
 
 	return (0);
 }
