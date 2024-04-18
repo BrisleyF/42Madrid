@@ -44,6 +44,7 @@ void print_content(void *content)
     printf("%s\n", (char *)content);
 }
 
+
 int	main(void)
 {
 /*
@@ -575,6 +576,7 @@ int	main(void)
     // Liberamos la memoria de la lista (opcional, dependiendo de tu implementación)
     ft_lstclear(&list, &free);
 */
+    // 43) ft_lstmap: 
     
 
 	return (0);
