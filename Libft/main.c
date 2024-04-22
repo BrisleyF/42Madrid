@@ -70,7 +70,7 @@ int	main(void)
     printf("El resultado: %zu\n", ft_strlen("holaaa1234"));
 
     7) ft_memset:
-    char buffer[40];
+    char buffer[40]; //direccion de memoria del arreglo
     ft_memset(buffer, 'X', 2);
     printf("El resultado: %s\n", buffer);
  
@@ -576,7 +576,7 @@ int	main(void)
     // Liberamos la memoria de la lista (opcional, dependiendo de tu implementación)
     ft_lstclear(&list, &free);
 */
-    // 43) ft_lstmap: 
+    // 43) ft_lstmap:
     
 
 	return (0);
