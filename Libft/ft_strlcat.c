@@ -10,33 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// La función ft_strlcat concatena la cadena de origen src al final del búfer
-// de destino dst, asegurándose de no exceder el tamaño máximo especificado
-// del búfer de destino dstsize. Se inicializan tres variables: londst para
-// almacenar la longitud actual del búfer de destino, lonsrc para almacenar
-// la longitud de la cadena de origen y cont para un contador que rastrea
-// la posición actual en el búfer de destino.
-// Se calcula la longitud actual del búfer de destino (londst) utilizando
-// la función ft_strlen.
-// Se calcula la longitud de la cadena de origen (lonsrc) utilizando la
-// función ft_strlen.
-// Se verifica si el tamaño del búfer de destino (dstsize) es menor o igual
-// a la longitud actual del búfer de destino (londst). Si es así, significa
-// que no hay espacio suficiente en el búfer de destino para concatenar la
-// cadena de origen completa.
-// En este caso, la función devuelve la suma de la longitud de la cadena de
-// origen y el tamaño del búfer de destino.
-// Se inicializa el contador cont en la posición actual del búfer de
-// destino (londst).
-// Se ejecuta un bucle while que copia los caracteres de la cadena de origen
-// al búfer de destino mientras haya espacio disponible en el búfer
-// (cont < (dstsize - 1)) y mientras no se haya alcanzado el final de la
-// cadena de origen (*src != '\0').
-// Se asegura que el búfer de destino esté terminado con un carácter nulo
-// después de la copia de los caracteres de la cadena de origen.
-// La función devuelve la suma de la longitud original del búfer de destino
-// y la longitud de la cadena de origen.
-
 #include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
@@ -45,10 +18,10 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	lonsrc;
 	size_t	cont;
 
-	londst = ft_strlen(dst);
-	lonsrc = ft_strlen(src);
 	if ((src == NULL || dst == NULL) && dstsize < 1)
 		return (0);
+	londst = ft_strlen(dst);
+	lonsrc = ft_strlen(src);
 	if (dstsize <= londst)
 		return (lonsrc + dstsize);
 	cont = londst;
@@ -57,3 +30,39 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	*(dst + cont) = '\0';
 	return (londst + lonsrc);
 }
+
+// La funcion ft_strlcat es de tipo size_t , lo que retornara un numero que
+// representa el tamaño de memoria en bytes de la concatenacion dst + src. 
+// Asegurándose de no exceder el tamaño máximo especificado del destino
+// (dstsize).
+// Esta funcion recibe 3 argumentos:
+// - char *dst es un puntero con la direccion de memoria donde se almacenara
+// la concatenacion de src.
+// - const char *src es un puntero con la direccion de memoria que contiene la
+// cadena origen.
+// - size_t dstsize tamaño en bytes de dst, se obtiene con sizeof(dst).
+// - Se crea la variable size_t	londst y se asigna con la longitud de dst.
+// - Se crea la variable size_t	lonsrc y se asigna con la longitud de src.
+// - Se crea la variable size_t cont que sera un contador y se asigna con el
+// valor de londst.
+// Con la primera condicional, nos aseguramos que los primeros dos argumentos
+// (las cadenas a concatenar) no sean nulos && que el tamaño en bytes de dst
+// (dstsize) sea mayor a 1.
+// Se hace un while con la siguiente condicion:
+// - El indice de src que se esta evaluando no sea el terminador nulo(final
+// de la cadena). && que el contador cont sea menor que la resta de
+//(dstsize - 1) para dejar disponible el espacio del \0.
+// En este punto cont esta asignada con el numero total de caracteres de la
+// cadena dst y se usara como indice para iterar y saber donde va empezar la
+// concatenacion.
+// Si se cumple la condicion se ejecuta la intruccion para hacer la
+// concatenacion.
+// - *(dst + cont++) = *src++ : accedemos al valor del puntero *dst(valor en
+// posicion inicial) y lo desplazamos hasta la posicion cont y a la vez se
+// incrementa, con el fin de asignarle el valor de src desde la posicion inicial
+// y src se incrementa hasta llegar al \0.
+// De esta manera se hace la concatenacion de src en el destino.
+// Despues que el bucle de detenga, la variable cont tendra el valor donde
+// correponde asignar el \0.
+// Finalmente se retorna la suma de longitud de las cadenas que se acaban de
+// concatenar. 

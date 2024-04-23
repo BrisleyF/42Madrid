@@ -13,6 +13,7 @@
 #include "libft.h"
 #include <stdio.h>
 #include <string.h>
+#include <bsd/string.h>
 
 // Función para convertir un carácter a mayúsculas
 char	to_uppercase(unsigned int index, char c)
@@ -71,34 +72,68 @@ int	main(void)
 
     7) ft_memset:
     char buffer[40]; //direccion de memoria del arreglo
+    printf("El resultado: %p\n", &buffer);
     ft_memset(buffer, 'X', 2);
     printf("El resultado: %s\n", buffer);
+    printf("El resultado: %p\n", &buffer);
  
     8) ft_bzero:
-    char buffer[10]; // Creamos un buffer de 10 bytes
-    // Llenamos el buffer con caracteres no nulos
-    strcpy(buffer, "hello");
+    // Ejemplo con enteros
+    int buffer[10] = {1,2,3,4,5,6,7,8,9,10}; // Creamos un buffer de 10 bytes
+    
+    // Imprimimos el contenido original del buffer
+    printf("Contenido original del buffer: %ls\n", buffer);
+    // Llamamos a ft_bzero para establecer los primeros 5 bytes del buffer a cero
+    ft_bzero(buffer, 20);
+    // Verificamos si se asignaron correctamente los ceros
+    int i = 0;
+    printf("Todos los bytes se han establecido correctamente en cero.\n");
+    printf("puntero modificado: ");
+    while (i < 10) {
+        printf("%d ", buffer[i]);
+        i++;
+    }
+    printf("\n"); 
+
+    // Ejemplo con caracteres
+    char buffer[11] = "hola mundo"; // Creamos un buffer de 10 bytes
+    
     // Imprimimos el contenido original del buffer
     printf("Contenido original del buffer: %s\n", buffer);
     // Llamamos a ft_bzero para establecer los primeros 5 bytes del buffer a cero
     ft_bzero(buffer, 5);
     // Verificamos si se asignaron correctamente los ceros
     int i = 0;
-    while (i < 5 && buffer[i] == '\0') {
+    printf("Todos los bytes se han establecido correctamente en cero.\n");
+    printf("puntero modificado: ");
+    while (i < 11) {
+        printf("%c", buffer[i]);
         i++;
     }
-    if (i == 5) {
-        printf("Todos los bytes se han establecido correctamente en cero.\n");
-    } else {
-        printf("Error: El byte en la posición %d no es cero.\n", i);
-    }
+    printf("\n");
 
     9) ft_memcpy:
     // sizeof es un operador, sizeof(src) se utiliza para obtener el tamaño en bytes del arreglo src.
+    // Ejemplo con char
     char dest[20];
     char src[] = "hola";
     ft_memcpy(dest, src, sizeof(src));
+    printf("tam en bytes de src: %ld\n", sizeof(src));
     printf("Contenido de dst después de la copia: %s\n", dest);
+
+    // Ejemplo con int
+    int dest[10];
+    int src[] = {1,2,3};
+    int i = 0;
+    ft_memcpy(dest, src, sizeof(src));
+    printf("tam en bytes de src: %li\n", sizeof(src));
+    printf("Contenido de dst después de la copia: " );
+
+    while (i < 10) {
+        printf("%d ",dest[i]);
+        i++;
+    }
+    printf("\n");
 
     10) ft_memmove:
     char buffer[20] = "Hola, mundo!"; // Área de memoria de destino
@@ -107,6 +142,7 @@ int	main(void)
     printf("buffer (destino): %s\n", buffer);
     printf("src (origen): %s\n", src);
     ft_memmove(buffer, src, strlen(src) + 1); // Copiar desde src a buffer,  strlen(src): contar los caracteres de src (incluyendo el carácter nulo)
+    //ft_memmove(buffer + 5, buffer, strlen(buffer) + 1);
     printf("\nDespués de copiar:\n");
     printf("buffer (destino): %s\n", buffer);
     printf("src (origen): %s\n", src);
@@ -117,6 +153,14 @@ int	main(void)
     size_t copied_len = ft_strlcpy(dst, src, sizeof(dst));
     printf("Cadena copiada: %s\n", dst);
     printf("Longitud de la cadena copiada: %zu\n", copied_len);
+
+    // NULL
+    char *src = NULL;
+    char *dst = NULL;
+    size_t copied_len = ft_strlcpy(dst, src, 10);
+    printf("Cadena copiada: %s\n", dst);
+    printf("Longitud de la cadena copiada: %zu\n", copied_len);
+
 
     12) ft_strlcat:
     char dest[10] = "Hello, ";
@@ -578,6 +622,7 @@ int	main(void)
 */
     // 43) ft_lstmap:
     
-
+    
+    
 	return (0);
 }

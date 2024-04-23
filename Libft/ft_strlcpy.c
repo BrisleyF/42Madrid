@@ -10,33 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// Se utiliza para copiar cadenas de caracteres de manera segura. 
-// Es parte de la familia de funciones diseñadas para evitar errores comunes
-// de manipulación de cadenas, como desbordamientos de búfer.
-// Se usa la funcion ft_strlen que devuelve la longitud de una cadena de origen.
-// 'dstsize < 1' Verifica si el tamaño del búfer de destino (dstsize)
-// es suficiente para contener al menos el carácter nulo de terminación.
-// Si no es así, se devuelve la longitud de la cadena de origen sin realizar
-// ninguna copia.
-// 'src[i] != '\0' && i < (dstsize - 1)' Asegura que el bucle continuará
-// caracteres desde la cadena de origen a la cadena de destino mientras no haya
-// copiando llegado al final de la cadena de origen y haya espacio disponible
-// en el búfer de destino para el carácter nulo de terminación.
-// 'dst[i] = src[i]' Se realiza la copia. 
-// 'dst[i] = '\0' Se asegura de que el búfer de destino esté terminado con
-// un carácter nulo.
-// Se devuelve la longitud de la cadena de origen (len).
-
 #include "libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t	i;
 	size_t	len;
+	size_t	i;
 
 	len = ft_strlen(src);
-	if (dstsize < 1)
-		return (len);
+	if (dst == NULL && src == NULL)
+	{
+		return (0);
+	}
 	i = 0;
 	while (src[i] != '\0' && i < (dstsize - 1))
 	{
@@ -46,3 +31,33 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	dst[i] = '\0';
 	return (len);
 }
+
+// La funcion ft_strlcpy es de tipo de dato size_t, se utiliza para representar
+// tamaños de objetos(variable, estructura de datos,array) y tamaños de memoria
+// en bytes. Esta funcion retorna el tamaño en bytes de la cadena de origen(src)
+// se pudiera representar tambien como la longitud de la cadena, ya que un
+// caracter pesa 1 byte.
+// Esta funcion recibe 3 argumentos: 
+// - char *dst que es el puntero destino donde se realizara la copia.
+// - const char *src puntero origen que no se modificara, solo se copiara su
+// contenido en dst.
+// - size_t dstsize tamaño en bytes de dst, se obtiene con sizeof(dst).
+// Se crea una variable 'len' de tipo de dato size_t para almacenar el resultado
+// de la funcion ft_strlen pasandole como argumento a src.
+// Se crea una variable i que sirve de contador y se inicializa en 0.
+// Con la condicion (dst == NULL && src == NULL) se pregunta si el destino y el
+// origen son nulos, en caso de que sea verdadero se retorna 0 lo que indica que
+// no se ha realizado ninguna copia.
+// Se hace un while con la siguiente condicion: 
+// - El indice de src que se esta evaluando no sea el terminador nulo(final
+// de la cadena). && que el contador i sea menor que la resta de (dstsize - 1)
+// para dejar disponible el espacio del \0. 
+// Si la condicion cumple:
+// - En la primera posicion de dst se le asigna el contenido de la primera
+// posicion de src. 
+// - Luego se incrementa el contador.
+// De esta manera se realiza la copia caracter por cararter hasta que la
+// condicion no se cumpla. 
+// El bucle termina habiendo copiado todos los caracteres y dejando espacio para
+// asignar el \0.
+// Por ultimo se retorna la longitud de la cadena src (len).

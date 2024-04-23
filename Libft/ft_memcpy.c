@@ -10,34 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// Esta funcion copia un bloque de memoria desde una ubicación 
-// de origen a otra ubicación de destino.
-// Lo que facilita la manipulación y el procesamiento de 
-// datos en una variedad de escenarios de programación.
-// memcpy operan en bytes individuales, por esta razon se 
-// tiene que cambiar el tipo de dato a char.
-// Evitando problemas como Interpretación incorrecta de los datos,
-// Posible desbordamiento de memoria, Errores de alineación.
-// El operador de casting, también conocido como operador 
-// de conversión de tipos.
-// Se utiliza colocando el tipo de dato deseado entre paréntesis 
-// antes de la variable o expresión que se desea convertir. 
-
 #include "libft.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	unsigned int	i;
+	unsigned char		*d;
+	const unsigned char	*s;
+	size_t				i;
 
 	if (src == NULL && dst == NULL)
 	{
 		return (NULL);
 	}
+	d = (unsigned char *)dst;
+	s = (const unsigned char *)src;
 	i = 0;
 	while (i < n)
 	{
-		((char *)dst)[i] = ((const char *)src)[i];
+		d[i] = s[i];
 		i++;
 	}
 	return (dst);
 }
+
+// La funcion ft_memcpy representa un puntero genérico que puede apuntar a
+// cualquier tipo de dato, con el proposito de retornar dicho puntero.
+// Esta funcion recibe 3 argumentos: 
+// - void *dst es un puntero que contiene la direccion de memoria, donde se hara
+// la copia.
+// - const void *src es un puntero que contiene la direccion de memoria, donde
+// se almacena el contenido de origen, es decir, el que se va a copiar en dst.
+// - size_t n es la cantidad de memoria en bytes que va a copiar.
+// Creo un unsigned char *d para asignarle la direccion de memoria de *dst y a 
+// la vez le cambio el tipo de dato.
+// Creo un unsigned char *s para asignarle la direccion de memoria de *src y a 
+// la vez le cambio el tipo de dato. Es una constante porque solo se copiara su
+// contenido no se modificara.
+// Creo una variable size_t i que sera un contador y la inicializo en 0.
+// Hago un while con la condicion: i tiene que ser menor que n
+// Si la condicion cumple:
+// - En la primera posicion de d se le asigna el contenido de la primera
+// posicion de s. 
+// - Luego se incrementa el contador.
+// De esta manera se realiza la copia caracter por cararter hasta que la
+// condicion no se cumpla.
+// Finalmente se retorna dst.
