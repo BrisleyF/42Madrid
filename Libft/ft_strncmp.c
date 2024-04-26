@@ -10,40 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// La función strncmp en C se utiliza para comparar los primeros n caracteres
-// de dos cadenas de caracteres (string1 y string2). La comparación se realiza
-// de manera lexicográfica, es decir, carácter por carácter, teniendo en cuenta
-// los valores ASCII de los caracteres.
-// string1 y string2: Son punteros a las cadenas que se van a comparar.
-// n: Es el número máximo de caracteres que se compararán en las cadenas.
-// La función strncmp compara los primeros n caracteres de string1 y string2.
-// Devuelve un valor entero que indica la relación entre las cadenas:
-// Devuelve un valor menor que cero si string1 es menor que string2.
-// Devuelve cero si string1 es igual a string2.
-// Devuelve un valor mayor que cero si string1 es mayor que string2.
-// En resumen, "(int)((unsigned char)s1[i] - (unsigned char)s2[i])" calcula
-// la diferencia entre los valores ASCII de los caracteres en las posiciones
-// i de las cadenas s1 y s2, y almacena este resultado como un entero en la
-// variable ret. Este valor entero se utiliza luego para determinar el orden
-// lexicográfico de las cadenas en la función ft_strncmp.
-
 #include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
-	int		ret;
+	int		result;
 
 	i = 0;
-	ret = 0;
+	result = 0;
 	while (i < n && (s1[i] != '\0' || s2[i] != '\0'))
 	{
 		if (s1[i] != s2[i])
 		{
-			ret = (int)((unsigned char)s1[i] - (unsigned char)s2[i]);
-			break ;
+			result = (int)((unsigned char)s1[i] - (unsigned char)s2[i]);
+			return (result);
 		}
 		i++;
 	}
-	return (ret);
+	return (result);
 }
+
+// Esta funcion ft_strncmp es de tipo int, retorna un numero entero y recibe 3
+// argumentos:
+// - const char *s1 la primera cadena que se va a comparar.
+// - conts char *s2 segunda cadena a comparar.
+// - size_z n numeros de caracteres que se tomara en cuenta para hacer la
+// comparacion.
+// Se crea una variable contador (i), se inicializa en 0(iterar).
+// Se crea una varianle int (result),
+// se inicializa en 0 ( i < n = false -> return(0)).
+// Se utiliza un while con la siguiente condicion:
+// - i sea menor que n &&
+// - El caracter de la posicion a evaluar de s1 no sea el final ||
+// - El caracter de la posicion a evaluar de s2 no sea el final.
+// Si la condicion es true: 
+// - Se hace una condicion preguntando si los caracteres en las posiciones
+// (s1 y s2) son distintos: 
+// - true -> la variable result se le asigna el valor de la resta de ambos
+// caracteres y se retorna result.
+// - false -> incrementa i++ para moverse de posicion y seguir comparando los
+// siguientes caracretes 
+// En caso de que ya no se cumpla la condicion del while, retorna (0);
+// result < 0 
+// result == 0
+// result > 0

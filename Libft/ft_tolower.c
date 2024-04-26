@@ -10,17 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// La función ft_tolower, convierte un carácter en mayúscula a su equivalente
-// en minúscula.
-// Dentro de la función, hay una condición if que verifica si el valor del
-// carácter está dentro del rango de caracteres mayúsculos, es decir,
-// entre 'A' y 'Z' inclusive.
-// Si el carácter es una mayúscula, se le suma 32 (que es la diferencia entre
-// los valores ASCII de una letra mayúscula y su equivalente en minúscula).
-// Esto convierte el carácter en su equivalente en minúscula.
-// Finalmente, la función devuelve el valor de c, que puede ser el mismo valor
-// si no era una letra mayúscula o su equivalente en minúscula si lo era.
-
 #include "libft.h"
 
 int	ft_tolower(int c)
@@ -31,3 +20,14 @@ int	ft_tolower(int c)
 	}
 	return (c);
 }
+
+// La funcion ft_tolower es de tipo int, retorna un int y recibe una variable
+// tipo int. Tiene como proposito convertir caracteres que estan en mayuscula
+// a minuscula. Esto se logra comparando con los valores de la tabla ASCII.
+// Se usa una condicional para saber si el valor de c esta en el rango
+// numerico que corresponde a las mayusculas(65 a 90 o 'A' a 'Z').
+// Si cumple la condicion: 
+// - Se realiza una suma al valor de c. La diferencia entre las letras
+// minúsculas y mayúsculas es exactamente 32.
+// Si c ya es una letra minuscula o cualquier otro carácter que no sea una
+// letra, entonces simplemente se retorna c sin cambios.

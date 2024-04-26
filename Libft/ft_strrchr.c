@@ -10,30 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// La función ft_strrchr comienza obteniendo la longitud de la cadena s
-// utilizando la función ft_strlen. Luego, comprueba si el carácter c
-// es el carácter nulo ('\0'). Si es así, asigna ret al puntero al final de la
-// cadena s.
-// Si c no es el carácter nulo, inicializa ret como NULL y recorre la cadena s
-// de atrás hacia adelante. Cuando encuentra la última ocurrencia de c, asigna
-// ret al puntero a esa posición de la cadena y sale del bucle.
-// Finalmente, devuelve ret, que es un puntero a la última ocurrencia del
-// carácter c en la cadena s, o NULL si no se encuentra.
-
 #include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	int		len;
 
-	i = 0;
-	while (s[i])
-		i++;
-	while (i >= 0)
+	len = ft_strlen(s);
+	while (len >= 0)
 	{
-		if (s[i] == (char)c)
-			return ((char *)(s + i));
-		i--;
+		if (s[len] == (char)c)
+			return ((char *)&s[len]);
+		len--;
 	}
 	return (NULL);
 }
+
+// Esta funcion ft_strchr es de tipo char* y retorna el *s en la posicion donde
+// encuentra la ultima coincidencia. Recibe como argumentos:
+// - El puntero donde se realizara la busqueda (*s).
+// - int c es el caracter a comparar.
+// Se obtiene la longitud de la cadena utilizando la función ft_strlen,
+// guardando el resultado en una variable llamada len.
+// Se utiliza un while con la siguiente condicion:
+// - Si el contador(len) es mayor o igual a 0.
+// Si se cumple la condicion: 
+// - Se crea una condicion para saber si la ultima posicion del puntero es igual
+// al caracter c. Si lo es se retorna la direccion de memoria (&s) justo en la
+// posicion donde coindice. Se realiza un casting de const char * a char * para
+// permitir que la función devuelva un puntero no constante.
+// - Si la condicion no cumple, se realiza un decremento de len--, indicando de
+// esta manera que el puntero ruede una posicion hacia atras para evaluar al
+// siguiente caracter.
+// Si nunca encuentra conincidencia retorna NULL.

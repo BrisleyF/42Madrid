@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <bsd/string.h>
+#include <ctype.h>
 
 // Función para convertir un carácter a mayúsculas
 char	to_uppercase(unsigned int index, char c)
@@ -180,30 +181,36 @@ int	main(void)
     char c = 'A';
     printf("%c convertido a minúscula es: %c\n", c, ft_tolower(c));
 
-    15) ft_strchr: 
+    //15) ft_strchr: 
     const char *str = "Hello, World!";
     char *ptr;
-    int c = 'l';
+    int c = 'z';
     ptr = ft_strchr(str, c);
     if (ptr != NULL) {
         printf("El carácter '%c' se encuentra en la posición: %ld\n", c, ptr - str);
+        printf("ptr: %s\n str: %s\n", ptr, str); // Obtener toda la cadena almacenada en el puntero
+        printf("ptr: %c\n str: %c\n", *ptr, *str); // El valor del caracter que apunta a esa direccion 
+        printf("ptr: %p\n str: %p\n", &ptr, &str); // Obtener direccion de memoria
         // En el contexto de este ejemplo, ptr apunta al carácter encontrado en la cadena str 
         // (la última ocurrencia del carácter buscado), y str apunta al inicio de la cadena. 
         // Entonces, ptr - str dará como resultado la posición del carácter encontrado en la cadena,
         // que es la diferencia en el número de caracteres entre el inicio de la cadena y la posición del carácter encontrado.
     } else {
         printf("El carácter '%c' no se encuentra en la cadena.\n", c);
+        printf("ptr: %s\nstr: %s\n", ptr, str);
     }
 
-    16) ft_strrchr: 
+    //16) ft_strrchr: 
     const char *str = "Hello, World!";
     char *ptr;
     int c = 'o';
-    ptr = ft_strrchr(str, c);
+    ptr = strrchr(str, c);
     if (ptr != NULL) {
         printf("El carácter '%c' se encuentra en la posición: %ld\n", c, ptr - str);
+        printf("ptr: %c\n", *ptr);
     } else {
         printf("El carácter '%c' no se encuentra en la cadena.\n", c);
+        printf("ptr: %c\n", *ptr);
     }
 
     17) ft_strncmp:
@@ -622,7 +629,36 @@ int	main(void)
 */
     // 43) ft_lstmap:
     
-    
-    
+    // 17) ft_strncmp:
+    const char *str1 = "cor";
+    const char *str2 = "cor";
+    int result;
+    // Comparación de los primeros 3 caracteres de str1 y str2
+    result = strncmp(str1, str2, 0);
+    if (result < 0) {
+        printf("'%s' es menor que '%s'\n", str1, str2);
+        printf("El resultado: '%d'\n", result);
+    } else if (result == 0) {
+        printf("'%s' es igual a '%s'\n", str1, str2);
+        printf("El resultado: '%d'\n", result);
+    } else {
+        printf("'%s' es mayor que '%s'\n", str1, str2);
+        printf("El resultado: '%d'\n", result);
+    }
+
+    /*18) ft_memchr:
+    const char *str = "Mi mamá me mima";
+    char *found = ft_memchr(str, 'x', strlen(str));
+    if (found != NULL) {
+        printf("El caracter 'x' se encontró en la posición %ld.\n", found - str);
+        printf("Resultado: %s\n", found);
+        printf("Resultado: %s\n", str);
+    } else {
+        printf("El caracter 'x' no se encontró.\n");
+    }*/
+
+
+
+  
 	return (0);
 }
