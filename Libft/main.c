@@ -231,6 +231,7 @@ int	main(void)
     }
 
     18) ft_memchr:
+    // char
     const char *str = "Mi mamá me mima";
     char *found = ft_memchr(str, 'x', strlen(str));
     if (found != NULL) {
@@ -239,6 +240,22 @@ int	main(void)
         printf("Resultado: %s\n", str);
     } else {
         printf("El caracter 'x' no se encontró.\n");
+    }
+
+    // int 
+    int arreglo[] = {1, 2, 3, 4, 5};
+    int valor_a_buscar = 5;
+    size_t longitud_arreglo = sizeof(int)*5;
+    printf("bytes: %zu\n", longitud_arreglo);
+    void *resultado = ft_memchr(arreglo, valor_a_buscar, longitud_arreglo);
+
+    if (resultado != NULL) {
+        printf("El valor %d se encontró en la posición %ld del arreglo.\n", valor_a_buscar, ((unsigned char *)resultado - (unsigned char *)arreglo)/sizeof(int));
+        printf("bytes: %zu\n", longitud_arreglo);
+        printf("resultado: %p\n", (unsigned int *)resultado);
+         printf("arreglo: %p\n", &arreglo);
+    } else {
+        printf("El valor %d no se encontró en el arreglo.\n", valor_a_buscar);
     }
 
     19) ft_memcmp:
@@ -628,35 +645,40 @@ int	main(void)
     ft_lstclear(&list, &free);
 */
     // 43) ft_lstmap:
-    
-    // 17) ft_strncmp:
-    const char *str1 = "cor";
-    const char *str2 = "cor";
-    int result;
-    // Comparación de los primeros 3 caracteres de str1 y str2
-    result = strncmp(str1, str2, 0);
-    if (result < 0) {
-        printf("'%s' es menor que '%s'\n", str1, str2);
-        printf("El resultado: '%d'\n", result);
-    } else if (result == 0) {
-        printf("'%s' es igual a '%s'\n", str1, str2);
-        printf("El resultado: '%d'\n", result);
+
+
+    // 18) ft_memchr:
+    int arreglo[] = {1, 2, 3, 4, 5};
+    int valor_a_buscar = 5;
+    size_t longitud_arreglo = sizeof(int)*5;
+    printf("bytes: %zu\n", longitud_arreglo);
+    void *resultado = ft_memchr(arreglo, valor_a_buscar, longitud_arreglo);
+
+    if (resultado != NULL) {
+        printf("El valor %d se encontró en la posición %ld del arreglo.\n", valor_a_buscar, ((unsigned char *)resultado - (unsigned char *)arreglo)/sizeof(int));
+        printf("bytes: %zu\n", longitud_arreglo);
+        printf("resultado: %p\n", (unsigned int *)resultado);
+         printf("arreglo: %p\n", &arreglo);
     } else {
-        printf("'%s' es mayor que '%s'\n", str1, str2);
-        printf("El resultado: '%d'\n", result);
+        printf("El valor %d no se encontró en el arreglo.\n", valor_a_buscar);
     }
 
-    /*18) ft_memchr:
-    const char *str = "Mi mamá me mima";
-    char *found = ft_memchr(str, 'x', strlen(str));
-    if (found != NULL) {
-        printf("El caracter 'x' se encontró en la posición %ld.\n", found - str);
-        printf("Resultado: %s\n", found);
-        printf("Resultado: %s\n", str);
+    /*19) ft_memcmp:
+    // Definimos dos bloques de memoria para comparar
+    char block1[] = "Applyab";
+    char block2[] = "Applehx";
+    // Definimos el número de bytes a comparar
+    size_t n = 7; // Se compararán los primeros 5 bytes
+    // Realizamos la comparación utilizando memcmp()
+    int result = ft_memcmp(block1, block2, n);
+    // Mostramos el resultado de la comparación
+    if (result < 0) {
+        printf("block1 es menor que block2\n");
+    } else if (result == 0) {
+        printf("block1 es igual a block2\n");
     } else {
-        printf("El caracter 'x' no se encontró.\n");
+        printf("block1 es mayor que block2\n");
     }*/
-
 
 
   
