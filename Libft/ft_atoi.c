@@ -10,46 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// Esencialmente, atoi() toma números en forma de texto y los convierte en
-// números que la computadora puede usar para realizar cálculos.
-// Es una función simple y no maneja errores, como cadenas de entradas
-// inválidas.
-// i se utilizará como un índice para recorrer la cadena de caracteres str.
-// sign se utilizará para almacenar el signo del número (positivo o negativo).
-// result es donde almacenaremos el número que vamos a convertir desde la
-// cadena de caracteres.
-// El primer bucle while asegura que nos posicionemos en el primer carácter
-// significativo de la cadena str, ignorando cualquier espacio en blanco al
-// principio. Esto es importante para que la función ft_atoi() comience a
-// analizar la parte numérica de la cadena. (espacio en blanco ' ', una
-// tabulación '\t', un salto de línea '\n', un retorno de carro '\r', un
-// avance de página '\f' o un tabulador vertical '\v'.)
-// El segundo bucle while se encarga de manejar los signos (+ y -) al
-// principio del número. 
-// Si str[i] es '-' o '+', estamos tratando con un signo. Luego,
-// verificamos si el siguiente carácter (str[i + 1]) también es '-' o '+'.
-// Si lo es, significa que hay dos signos consecutivos, lo cual no es válido
-// y salimos del bucle con break.
-// Si solo hay un signo, verificamos si es un signo negativo ('-'). Si es así,
-// multiplicamos sign por -1, lo que cambia el signo del número.
-// Incrementamos i para pasar al siguiente carácter en la cadena str.
-// El tercer bucle while es responsable de convertir los caracteres numéricos
-// en su valor numérico correspondiente.
-// El tercer bucle se ejecuta mientras el carácter actual en la posición i de
-// la cadena str sea un dígito (es decir, un carácter numérico del 0 al 9). 
-// Dentro del bucle, multiplicamos el número actual (result) por 10 y le
-// sumamos el valor numérico del carácter actual en str[i].
-// Multiplicamos por 10 dentro del bucle para "desplazar" los dígitos hacia la
-// izquierda en el número resultante. Esto se debe a cómo funcionan los números
-// en base 10. Este proceso garantiza que cada dígito se coloque correctamente
-// en su posición en el número resultante, y que el número completo se construya
-// correctamente mientras recorremos la cadena de dígitos en la cadena str.
-// La conversión de un carácter numérico ('0' al '9') a su valor numérico se
-// logra restando '0' del carácter numérico. Por ejemplo, si str[i] es '5',
-// entonces '5' - '0' da como resultado 5.
-// Luego, incrementamos i para pasar al siguiente carácter en la cadena str.
-// Esto se repite hasta que str[i] ya no sea un dígito.
-
 #include "libft.h"
 
 int	ft_atoi(const char *str)
@@ -79,3 +39,37 @@ int	ft_atoi(const char *str)
 	}
 	return (sign * result);
 }
+
+// La funcion ft_atoi es de tipo int. Recibe una cadena de caracteres, donde
+// buscara si el texto contiene un digito y lo convertira en un numero entero.
+// Se usan 3 variables:
+// - int i -> contador, se inicializa en 0.
+// - int sign -> se almacena el signo y se inicializa en 1.
+// -  unsigned long result -> se almacena el resultado y se inicializa en 0.
+// while 1 -> Se busca ignorar espacio en blanco ' ', una
+// tabulación '\t', un salto de línea '\n', un retorno de carro '\r', un
+// avance de página '\f' o un tabulador vertical '\v'.
+// Esto es importante para que la función ft_atoi() comience a analizar la
+// parte numérica de la cadena.
+// true while 1 -> incrementar i++ para avanzar hasta encontrar otro caracter.
+// false while 1 -> pregunta la condicion del segundo while.
+// while 2 -> se encarga de manejar los signos (+ y -) al principio del número.
+// true while 2 -> 
+// 1) if(se pregunta si el caracter siguiente tambien tiene un
+// signo)
+// true if 1 -> sale de la condicional con un break.
+// false if 1 -> 
+// 2) if(si el caracter a evaluar tiene un signo -)
+// true if 2 -> se multiplica el valor de la variable sing por -1.
+// false if 2 -> en caso de que no sea negativo, solo se incrementa i++ con el
+// fin de seguir evaluando los signos de los demas caracteres.
+// false while 2 -> En caso de no encontrar ningun signo o ya almacenar el
+// signo - en la variable sing. Se pregunta la condicion del tercer while.
+// while 3 -> Si encontramos digitos del 0 al 9
+// true while 3 -> multiplicamos el número actual (result) por 10 y le sumamos
+// el valor numérico del carácter actual en str[i].
+// str[i] - '0' -> Por ejemplo, si str[i] es '5', entonces '5' - '0' da como
+// resultado 5.
+// Despues de almacenar el resultado (result), se incrementa i++ para hacer lo
+// mismo con el resto de digitos.
+// false while 3 -> Si no encuenta digitos, retorna sign * result.

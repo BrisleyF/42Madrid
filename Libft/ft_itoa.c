@@ -73,7 +73,7 @@
 
 #include "libft.h"
 
-long int	ft_base(long int base, size_t exp, int *value)
+static long int	ft_base(long int base, size_t exp, int *value)
 {
 	long int	number;
 

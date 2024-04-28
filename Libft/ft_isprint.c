@@ -10,12 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// La función ft_isprint determina si un carácter dado es 
-// un carácter imprimible en ASCII. Retorna 1 si es 
-// un carácter imprimible y 0 si no lo es. 
-// Los caracteres imprimibles en ASCII son aquellos
-// que pueden ser mostrados y representados visualmente en la pantalla.
-
 #include "libft.h"
 
 int	ft_isprint(int c)
@@ -26,3 +20,9 @@ int	ft_isprint(int c)
 	}
 	return (0);
 }
+
+// La función ft_isprint determina si un carácter dado es 
+// un carácter imprimible en ASCII. Retorna 1 si es 
+// un carácter imprimible y 0 si no lo es. 
+// Los caracteres imprimibles en ASCII son aquellos
+// que pueden ser mostrados y representados visualmente en la pantalla.

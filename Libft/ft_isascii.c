@@ -10,11 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// La función ft_isascii determina si un valor entero dado representa
-// un carácter ASCII válido. Los caracteres ASCII válidos
-// tienen valores enteros en el rango de 0 a 127. 
-// Retorna 1 si es un carácter ASCII válido y 0 si no lo es.
-
 #include "libft.h"
 
 int	ft_isascii(int c)
@@ -25,3 +20,8 @@ int	ft_isascii(int c)
 	}
 	return (0);
 }
+
+// La función ft_isascii determina si un valor entero dado representa
+// un carácter ASCII válido. Los caracteres ASCII válidos
+// tienen valores enteros en el rango de 0 a 127. 
+// Retorna 1 si es un carácter ASCII válido y 0 si no lo es.

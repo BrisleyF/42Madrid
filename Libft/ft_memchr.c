@@ -10,41 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// La función memchr en lenguaje C se utiliza para buscar la primera ocurrencia
-// de un byte específico dentro de una región de memoria dada. 
-// La diferencia: strchr se utiliza específicamente para buscar letras o
-// caracteres dentro de cadenas de texto, mientras que memchr se utiliza para
-// buscar bytes dentro de cualquier región de memoria, no solo cadenas de texto.
-// Puedes pensar en ello como buscar una moneda específica en una bolsa llena de
-// monedas diferentes. No necesariamente tiene que ser una palabra o una cadena
-// de texto; puede ser cualquier conjunto de datos.
-// void *ft_memchr(const void *s, int c, size_t n): Esto define la función
-// ft_memchr, que toma tres argumentos: un puntero s a los datos que se deben
-// buscar, un byte c que se debe buscar en los datos y un tamaño n que
-// especifica cuántos bytes se deben examinar. La función devuelve un puntero
-// void *.
-// unsigned char *str;: Aquí se declara un puntero str de tipo unsigned char *.
-// Este puntero se utilizará para manipular los datos de entrada s. Se declara
-// como unsigned char * para asegurar que podamos acceder a los bytes
-// individuales  de los datos, independientemente de si s es un puntero a
-// datos de tipo char o i = 0;: Se inicializa el contador i a 0.
-// while (i < n): Este bucle while se ejecuta mientras i sea menor que n, lo que
-// significa que continuará hasta que hayamos examinado los primeros n bytes de
-// los datos.
-// if (str[i] == (unsigned char)c) return ((void *)&str[i]);: Dentro del bucle,
-// se compara el byte actual (str[i]) con el byte c. Si son iguales, significa
-// que hemos encontrado el byte que estamos buscando, por lo que se devuelve un
-// puntero al byte encontrado. Se utiliza un casting para convertir el puntero
-// &str[i] al tipo void *.
-// i++;: Se incrementa i para pasar al siguiente byte en los datos. a cualquier
-// otro tipo.
-// return (NULL);: Si llegamos al final del bucle sin encontrar el byte c dentro
-// de los primeros n bytes, se devuelve un puntero NULL para indicar que el byte
-// no se encontró.
-// En resumen, esta función busca un byte específico dentro de los primeros n
-// bytes de los datos apuntados por s. Si encuentra el byte, devuelve un puntero
-// a ese byte; de lo contrario, devuelve NULL.
-
 #include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
@@ -62,3 +27,27 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
+
+// La funcion ft_memchr se utiliza para buscar bytes dentro de cualquier región
+// de memoria. Es de tipo void puntero, retorna un puntero void con la direccion
+// de memoria, de la primera ocurrencia encontrada(posicion). Es decir,
+// retornara el puntero *s con la posicion de la ocurrencia.
+// Esta funcion recibe 3 argumentos:
+// - *s es el puntero o la cadena que se va a evaluar.
+// - int c es el caracter que se va a buscar en *s.
+// - size_t n es la cantidad de bytes que va a buscar dentro del bloque total de
+// memoria.
+// Se crea una variable i, que se usara de contador y se inicializa en 0.
+// Se crea un puntero unsigned char	*str para asignarle la misma direccion de
+// memoria del puntero original (*s) haciendo un casting del tipo de dato.
+// Se usa un while con la siguiente condicion:
+// - La variable i tiene que ser menor que n.
+// Si es true:
+// - Se pregunta si el caracter de la posicion que se esta evaluando es igual al
+// valor de c. 
+// Si cumple la condicion, se retorna la direccion de memoria de *str apuntando
+// a la posicion que encontro la coincidencia.
+// Si no existe coincidencia, se incrementa el puntero original (*s++), con el
+// fin de seguir evaluando el resto de caracteres.
+// Si la condicionn del while es falsa:
+// - Se retorna NULL.

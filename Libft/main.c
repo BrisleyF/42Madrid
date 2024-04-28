@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdio.h>
 #include <string.h>
-#include <bsd/string.h>
+//#include <bsd/string.h>
 #include <ctype.h>
 
 // Función para convertir un carácter a mayúsculas
@@ -240,12 +240,13 @@ int	main(void)
         printf("Resultado: %s\n", str);
     } else {
         printf("El caracter 'x' no se encontró.\n");
+        printf("Resultado: %s\n", found);
     }
 
     // int 
     int arreglo[] = {1, 2, 3, 4, 5};
     int valor_a_buscar = 5;
-    size_t longitud_arreglo = sizeof(int)*5;
+    size_t longitud_arreglo = sizeof(int)*5; // 0 para que retorne NULL
     printf("bytes: %zu\n", longitud_arreglo);
     void *resultado = ft_memchr(arreglo, valor_a_buscar, longitud_arreglo);
 
@@ -256,6 +257,7 @@ int	main(void)
          printf("arreglo: %p\n", &arreglo);
     } else {
         printf("El valor %d no se encontró en el arreglo.\n", valor_a_buscar);
+        printf("Resultado: %s\n", resultado);
     }
 
     19) ft_memcmp:
@@ -274,6 +276,13 @@ int	main(void)
     } else {
         printf("block1 es mayor que block2\n");
     }
+
+    // int 
+    int block1[] = {1,2,3,4,5};
+    int block2[] = {1,2,3,4,8};
+    size_t longitud_arreglo = sizeof(int)*5; // 0 para que retorne NULL
+    int result = ft_memcmp(block1, block2, 0);
+    printf("result: %d\n", result);
 
     20) ft_strnstr:
     const char *haystack = "Hello, world! This is a test string.";
@@ -301,7 +310,7 @@ int	main(void)
     printf("Número convertido de \"%s\": %d\n", str5, ft_atoi(str5));
 
     // 22) ft_calloc:
-    size_t num_elements = 5; // Número de elementos en el arreglo
+    size_t num_elements = SIZE_MAX; // Número de elementos en el arreglo. SIZE_MAX=NULL
     size_t size_of_elements = sizeof(int); // Tamaño de cada elemento (en bytes)
     // Llamada a ft_calloc para asignar memoria para un arreglo de 5 enteros
     int *array = (int *)ft_calloc(num_elements, size_of_elements);
@@ -416,6 +425,11 @@ int	main(void)
     char input[] = "Hola, mundo!";
     // Aplicar ft_strmapi para convertir la cadena a mayúsculas
     ft_striteri(input, &print_index_char);
+    int i = 0;
+    while(input[i]){
+        printf("%c",input[i]);
+        i++;
+    }
 
     // 31) ft_putchar_fd:
      char c = 'A';
@@ -645,42 +659,9 @@ int	main(void)
     ft_lstclear(&list, &free);
 */
     // 43) ft_lstmap:
-
-
-    // 18) ft_memchr:
-    int arreglo[] = {1, 2, 3, 4, 5};
-    int valor_a_buscar = 5;
-    size_t longitud_arreglo = sizeof(int)*5;
-    printf("bytes: %zu\n", longitud_arreglo);
-    void *resultado = ft_memchr(arreglo, valor_a_buscar, longitud_arreglo);
-
-    if (resultado != NULL) {
-        printf("El valor %d se encontró en la posición %ld del arreglo.\n", valor_a_buscar, ((unsigned char *)resultado - (unsigned char *)arreglo)/sizeof(int));
-        printf("bytes: %zu\n", longitud_arreglo);
-        printf("resultado: %p\n", (unsigned int *)resultado);
-         printf("arreglo: %p\n", &arreglo);
-    } else {
-        printf("El valor %d no se encontró en el arreglo.\n", valor_a_buscar);
-    }
-
-    /*19) ft_memcmp:
-    // Definimos dos bloques de memoria para comparar
-    char block1[] = "Applyab";
-    char block2[] = "Applehx";
-    // Definimos el número de bytes a comparar
-    size_t n = 7; // Se compararán los primeros 5 bytes
-    // Realizamos la comparación utilizando memcmp()
-    int result = ft_memcmp(block1, block2, n);
-    // Mostramos el resultado de la comparación
-    if (result < 0) {
-        printf("block1 es menor que block2\n");
-    } else if (result == 0) {
-        printf("block1 es igual a block2\n");
-    } else {
-        printf("block1 es mayor que block2\n");
-    }*/
-
-
+ 
+    
+    
   
 	return (0);
 }
