@@ -10,11 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// La función ft_strlen calcula la longitud de una cadena 
-// de caracteres pasada como argumento 
-// y devuelve el número de caracteres en esa cadena, 
-// excluyendo el carácter nulo al final.
-
 #include "libft.h"
 
 size_t	ft_strlen(const char *str)
@@ -28,3 +23,8 @@ size_t	ft_strlen(const char *str)
 	}
 	return (i);
 }
+
+// La función ft_strlen calcula la longitud de una cadena 
+// de caracteres pasada como argumento 
+// y devuelve el número de caracteres en esa cadena, 
+// excluyendo el carácter nulo al final.

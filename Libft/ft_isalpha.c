@@ -10,10 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// La función ft_isalpha determina si un carácter dado 
-// es una letra del alfabeto, tanto mayúscula como minúscula.
-// Retorna 1 si es una letra y 0 si no lo es.
-
 #include "libft.h"
 
 int	ft_isalpha(int c)
@@ -24,3 +20,7 @@ int	ft_isalpha(int c)
 	}
 	return (0);
 }
+
+// La función ft_isalpha determina si un carácter dado 
+// es una letra del alfabeto, tanto mayúscula como minúscula.
+// Retorna 1 si es una letra y 0 si no lo es.

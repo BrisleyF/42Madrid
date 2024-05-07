@@ -10,10 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// La función ft_isdigit determina si un carácter dado es
-// un dígito en el conjunto de caracteres ASCII (0-9).
-// Retorna 1 si es un dígito y 0 si no lo es.
-
 #include "libft.h"
 
 int	ft_isdigit(int c)
@@ -24,3 +20,7 @@ int	ft_isdigit(int c)
 	}
 	return (0);
 }
+
+// La función ft_isdigit determina si un carácter dado es
+// un dígito en el conjunto de caracteres ASCII (0-9).
+// Retorna 1 si es un dígito y 0 si no lo es.

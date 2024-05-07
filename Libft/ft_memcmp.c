@@ -10,28 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// memcmp() es una función en C que se utiliza para comparar dos bloques de
-// memoria byte a byte.  interpretando cada byte como un unsigned char.
-// El valor de retorno de memcmp() indica la relación entre los bloques de
-// memoria comparados:
-// Si el primer byte que difiere en s1 es menor que el correspondiente en s2,
-// memcmp() devuelve un número negativo.
-// Si los bloques de memoria son idénticos, memcmp() devuelve cero.
-// Si el primer byte que difiere en s1 es mayor que el correspondiente en s2,
-// memcmp() devuelve un número positivo.
-// Se declaran tres variables: i (un contador), str1 (un puntero a unsigned
-// char que apunta al primer bloque de memoria) y str2 (un puntero a unsigned
-// char que apunta al segundo bloque de memoria).
-// Resumen:
-// - Si se compara los dos bloques de memoria y no hay coincidencia: 
-// Se compara el primer byte de acuerdo a su numero ascii, se retorna la
-// resta de estos dos valores (s1 y s2).
-// - Si se compara los dos bloques de memoria y hay coincidencia:
-// Se comparara el byte que no coincide de acuerdo a su numero ascii, se
-// retorna la resta de estos dos valores (s1 y s2).
-// Nota: Si quiero comparar 10 bytes pero el numero 5 deja de coincidir,
-// se va a comparar y restar el primero en no coincidir, no el ultimo.
-
 #include "libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
@@ -51,3 +29,24 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
+
+// La funcion ft_memcmp se utiliza para comparar dos bloques de memoria byte a
+// byte. Es de tipo int y retorna un entero que representa la diferencia entre
+// los valores ASCII de los caracteres que no coinciden.
+// Recibe 3 argumentos:
+// - *s1 primer bloque de memoria a comparar.
+// - *s2 segundo bloque de memoria a comparar. 
+// - size_t cantidad de bytes a evaluar(hasta donde se compara).
+// Se crea un contador i tipo size_t y se inicializa a 0.
+// Se crea dos punteros de tipo unsigned char que apunten a la direccion de
+// memoria de los punteros originales. 
+// while (que i sea menor que n)
+// tru while -> (que el caracter en la posicion que se esta evaluando de str1
+// sea distinto a el caracter en la posicion que se esta evaluando de str2)
+// tru -> retorna la resta de los valores de la tabla ASCII correspondiente a
+// los caracteres que no coinciden.
+// Nota: Si quiero comparar 10 bytes pero el numero 5 deja de coincidir,
+// se va a comparar y restar el primero en no coincidir, no el ultimo.
+// false -> si los caracteres son iguales, se incrementa i++ para evaluar el
+// resto de caracteres.
+// false while -> no entra al bucle y retorna 0.
