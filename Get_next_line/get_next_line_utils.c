@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "get_next_line.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -87,7 +86,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*new_str;
 	size_t	len_s1;
 	size_t	len_s2;
-    char	*result;
+	char	*result;
 
 	if (!s1 || !s2)
 		return (NULL);
@@ -96,7 +95,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	new_str = malloc(len_s1 + len_s2 + 1);
 	if (!new_str)
 		return (NULL);
-    result = new_str;
+	result = new_str;
 	while (s1 && *s1)
 		*new_str++ = *s1++;
 	while (s2 && *s2)

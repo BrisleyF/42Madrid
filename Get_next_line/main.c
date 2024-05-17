@@ -8,31 +8,27 @@ int main (int argc, char **argv)
 {
     int fd;
     char *line;
-    //int n_bytes;
-    //char result[BUFFER_SIZE + 1];
-
-    if (argc != 2) {
-        printf("Uso: %s <nombre_archivo>\n", argv[0]);
+    int repit;
+    int i;
+    if (argc != 3) {
+        printf("Uso: %s <nombre_archivo> <repeticiones>\n", argv[0]);
         return 1;
     }
-
     fd = open (argv[1], O_RDONLY);
     if (fd == -1)
         return (printf("fallo"), 1);
-    
-    while ((line = get_next_line(fd)) != NULL) {
-		printf("%s", line);
-		free(line); 
-	}
-    printf("\n");
-	// Close the file descriptor
-	close(fd);
+    repit = atoi(argv[2]);
+    printf("Repit: %d\n",repit);
+    i = 0;
+    while(i < repit)
+    {
+        line = get_next_line(fd);
+        printf("main: %s", line);
+        i++;
+        free(line); 
+    }
 
-    /*n_bytes = read(fd, result, BUFFER_SIZE);
-
-    printf("Valor de buffer size %d\n", BUFFER_SIZE);
-    printf("Cantidad de bytes leidos %d\n", n_bytes);
-    printf("bufffer leido: [%s]\n", result);*/
-
+    // Close the file descriptor
+    close(fd);
     return (0);
 }

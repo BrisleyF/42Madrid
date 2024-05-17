@@ -13,27 +13,38 @@
 #include <unistd.h>
 #include "get_next_line.h"
 
-static char	*function_name(int fd, char *buf, char *backup)
+// join and free
+char	*ft_free(char *line, char *buf)
 {
-	int		read_line;
-	char	*char_temp;
+	char	*temp;
 
-	read_line = 1;
-	while (read_line != '\0')
+	temp = ft_strjoin(line, buf);
+	free(line);
+	return (temp);
+}
+
+static char	*reading(int fd, char *buf, char *backup)
+{
+	int	count_read;
+
+	count_read = 1;
+	while (count_read > 0)
 	{
-		read_line = read(fd, buf, BUFFER_SIZE);
-		if (read_line == -1)
-			return (0);
-		else if (read_line == 0)
+		count_read = read(fd, buf, BUFFER_SIZE);
+		printf("funcion reading => count_read: %d\n", count_read);
+		if (count_read == -1)
+		{
+			free(buf);
+			return (NULL);
+		}
+		else if (count_read == 0)
 			break ;
-		buf[read_line] = '\0';
+		buf[count_read] = 0;
 		if (!backup)
 			backup = ft_strdup("");
-		char_temp = backup;
-		backup = ft_strjoin(char_temp, buf);
-		free(char_temp);
-		char_temp = NULL;
-		if (ft_strchr (buf, '\n'))
+		backup = ft_free(backup, buf);
+		printf("funcion reading => backup: %s\n", backup);
+		if (ft_strchr(buf, '\n'))
 			break ;
 	}
 	return (backup);
@@ -41,47 +52,45 @@ static char	*function_name(int fd, char *buf, char *backup)
 
 static char	*extract(char *line)
 {
-	size_t	count;
+	size_t	i;
 	char	*backup;
 
-	count = 0;
-	while (line[count] != '\n' && line[count] != '\0')
-		count++;
-	if (line[count] == '\0' || line[1] == '\0')
-		return (0);
-	backup = ft_substr(line, count + 1, ft_strlen(line) - count);
+	i = 0;
+	while (line[i] != '\0' && line[i] != '\n')
+		i++;
+	if (line[i] == '\0')
+	{
+		free(line);
+		return (NULL);
+	}
+	backup = ft_substr(line, i + 1, ft_strlen(line) - i);
 	if (*backup == '\0')
 	{
 		free(backup);
 		backup = NULL;
 	}
-	line[count + 1] = '\0';
+	line[i + 1] = '\0';
+	printf("funcion extract => backup: %s\n", backup);
 	return (backup);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-    char  *read_bytes;
-    char *write_bytes;
-    static char	*backup;
+	char		*line;
+	char		*buf;
+	static char	*backup;
 
-    if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-
-    write_bytes = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-
-    if (!write_bytes)
-        return (0);
-
-    read_bytes = function_name(fd, write_bytes, backup);
-
-    free(write_bytes);
-    write_bytes = NULL;
-
-    if (!read_bytes)
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (0);
+	line = reading(fd, buf, backup);
+	printf("funcion gnl => linea: %s\n", line);
+	free(buf);
+	buf = NULL;
+	if (!line || !*line)
 		return (NULL);
-
-    backup = extract(read_bytes);
-    return (read_bytes);
-
+	backup = extract(line);
+	return (line);
 }
