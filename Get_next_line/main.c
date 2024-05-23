@@ -18,12 +18,12 @@ int main (int argc, char **argv)
     if (fd == -1)
         return (printf("fallo"), 1);
     repit = atoi(argv[2]);
-    printf("Repit: %d\n",repit);
+    // printf("Repit: %d\n",repit);
     i = 0;
     while(i < repit)
     {
         line = get_next_line(fd);
-        printf("main: %s", line);
+        printf("%s", line);
         i++;
         free(line); 
     }

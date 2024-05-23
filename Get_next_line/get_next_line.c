@@ -31,7 +31,7 @@ static char	*reading(int fd, char *buf, char *backup)
 	while (count_read > 0)
 	{
 		count_read = read(fd, buf, BUFFER_SIZE);
-		printf("funcion reading => count_read: %d\n", count_read);
+		// printf("funcion reading => count_read: %d\n", count_read);
 		if (count_read == -1)
 		{
 			free(buf);
@@ -43,7 +43,7 @@ static char	*reading(int fd, char *buf, char *backup)
 		if (!backup)
 			backup = ft_strdup("");
 		backup = ft_free(backup, buf);
-		printf("funcion reading => backup: %s\n", backup);
+		// printf("funcion reading => backup: %s\n", backup);
 		if (ft_strchr(buf, '\n'))
 			break ;
 	}
@@ -60,7 +60,7 @@ static char	*extract(char *line)
 		i++;
 	if (line[i] == '\0')
 	{
-		free(line);
+		// free(line);
 		return (NULL);
 	}
 	backup = ft_substr(line, i + 1, ft_strlen(line) - i);
@@ -70,7 +70,7 @@ static char	*extract(char *line)
 		backup = NULL;
 	}
 	line[i + 1] = '\0';
-	printf("funcion extract => backup: %s\n", backup);
+	// printf("funcion extract => backup: %s\n", backup);
 	return (backup);
 }
 
@@ -86,7 +86,7 @@ char	*get_next_line(int fd)
 	if (!buf)
 		return (0);
 	line = reading(fd, buf, backup);
-	printf("funcion gnl => linea: %s\n", line);
+	// printf("funcion gnl => linea: %s\n", line);
 	free(buf);
 	buf = NULL;
 	if (!line || !*line)
